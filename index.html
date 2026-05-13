@@ -79,15 +79,15 @@
   .section-header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .count-pill{font-family:var(--font-mono);font-size:10px;color:var(--accent);background:rgba(120,180,255,0.12);border:1px solid rgba(120,180,255,0.25);border-radius:20px;padding:3px 10px;white-space:nowrap;}
 
-  /* ENTRY ROWS */
-  .entry-wrap{padding:10px 4px;border-bottom:1px solid rgba(120,180,255,0.07);}
+  /* ENTRY ROWS — single line */
+  .entry-wrap{padding:7px 4px;border-bottom:1px solid rgba(120,180,255,0.07);}
   .entry-wrap:last-child{border-bottom:none;}
   .entry-wrap:hover{background:rgba(120,180,255,0.025);border-radius:8px;}
 
-  /* Row 1: company | role */
-  .entry-r1{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:7px;}
-  /* Row 2: url+copy | notes | save+status */
-  .entry-r2{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;}
+  /* r1 hidden — company and role now part of the single row in r2 */
+  .entry-r1{display:none;}
+  /* Single row: company | role | url+copy | notes | save+status */
+  .entry-r2{display:grid;grid-template-columns:160px 1fr 1fr 1fr auto;gap:8px;align-items:center;}
 
   /* ALL CARD */
   .all-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;}
@@ -391,20 +391,20 @@ function buildRow(p,showDate){
   const s=SC[p.status]||SC["Applied"];
   const wrap=document.createElement("div");wrap.className="entry-wrap";
 
-  // Row 1: company | role
+  // r1 intentionally empty (hidden by CSS)
   const r1=document.createElement("div");r1.className="entry-r1";
-  r1.innerHTML=`
+
+  // Single row: company | role | url+copy | notes | save+status
+  const r2=document.createElement("div");r2.className="entry-r2";
+  const dateLabel=showDate&&p.date?`<div style="font-family:var(--font-mono);font-size:8px;color:var(--text-mid);margin-top:3px;">${p.date.slice(0,10)}</div>`:"";
+  r2.innerHTML=`
     <div>
       <input class="field-input co" id="co-${p.id}" value="${esc(p.company||"")}" placeholder="company..."
         onkeydown="if(event.key==='Enter')saveField('${p.id}')">
-      ${showDate?`<div style="font-family:var(--font-mono);font-size:9px;color:var(--text-mid);margin-top:4px;">${p.date?p.date.slice(0,10):"—"}</div>`:""}
+      ${dateLabel}
     </div>
     <input class="field-input" id="role-${p.id}" value="${esc(p.role||"")}" placeholder="role..."
-      onkeydown="if(event.key==='Enter')saveField('${p.id}')">`;
-
-  // Row 2: url+copy | notes | save+status
-  const r2=document.createElement("div");r2.className="entry-r2";
-  r2.innerHTML=`
+      onkeydown="if(event.key==='Enter')saveField('${p.id}')">
     <div class="url-wrap">
       <input class="field-input" id="url-${p.id}" value="${esc(p.careerPage||"")}" placeholder="career page url..."
         onkeydown="if(event.key==='Enter')saveField('${p.id}')">
