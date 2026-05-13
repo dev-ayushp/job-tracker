@@ -286,8 +286,7 @@ function render(){
   setVal("s-today",todayPages.length);
   const uniqueCo = new Set(allPages.map(p => (p.company||"").toLowerCase().trim()).filter(c => c && c !== "unknown")).size;
   document.getElementById("unique-co").textContent = uniqueCo + " unique companies applied to";
-  const uniqueCos = new Set(allPages.map(p=>(p.company||"").trim().toLowerCase()).filter(c=>c&&c!=="unknown")).size;
-  setVal("s-companies", uniqueCos);
+
   const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const [,m,d]=today.split("-");
   document.getElementById("s-date").textContent=MN[+m-1]+" "+(+d);
