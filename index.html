@@ -25,29 +25,25 @@
   .header-left h1{font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;}
   .header-left p{font-size:22px;font-weight:800;line-height:1.1;}
   .header-left p span{color:var(--accent);}
-  .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
-  .sync-row{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+  .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
   .sync-badge{font-family:var(--font-mono);font-size:10px;color:var(--text-mid);}
   .sync-badge span{color:var(--accent3);}
-  .btn-row{display:flex;gap:8px;margin-top:4px;}
-  .btn{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border-radius:20px;padding:6px 14px;cursor:pointer;transition:all 0.2s;border:1px solid var(--border);background:var(--surface2);color:var(--text-mid);}
-  .btn:hover{border-color:var(--border-bright);color:var(--accent);}
-  .btn:disabled{opacity:0.4;cursor:default;}
-  .btn.btn-notion{border-color:rgba(255,255,255,0.2);color:#fff;text-decoration:none;display:inline-flex;align-items:center;}
-  .btn.btn-notion:hover{border-color:rgba(255,255,255,0.5);color:#fff;background:rgba(255,255,255,0.07);}
-  .btn.btn-gmail{border-color:rgba(251,191,36,0.35);color:var(--warning);}
-  .btn.btn-gmail:hover{border-color:rgba(251,191,36,0.65);background:rgba(251,191,36,0.07);}
-  .btn.btn-syncing{animation:blink 1s ease infinite;}
+  .header-btns{display:flex;gap:8px;margin-top:4px;}
+  .hbtn{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border-radius:20px;padding:6px 14px;cursor:pointer;transition:all 0.2s;border:1px solid var(--border);background:var(--surface2);color:var(--text-mid);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+  .hbtn:hover{border-color:var(--border-bright);color:var(--accent);}
+  .hbtn.notion{border-color:rgba(255,255,255,0.2);color:#fff;}
+  .hbtn.notion:hover{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.07);}
+  .hbtn.notes-btn{border-color:rgba(251,191,36,0.35);color:var(--warning);}
+  .hbtn.notes-btn:hover{border-color:rgba(251,191,36,0.65);background:rgba(251,191,36,0.07);}
 
   /* BARS */
   .err-bar{font-family:var(--font-mono);font-size:11px;color:var(--danger);padding:9px 14px;background:rgba(248,113,113,0.1);border-radius:10px;border:1px solid rgba(248,113,113,0.25);margin-bottom:14px;display:none;}
-  .info-bar{font-family:var(--font-mono);font-size:11px;color:var(--warning);padding:9px 14px;background:rgba(251,191,36,0.1);border-radius:10px;border:1px solid rgba(251,191,36,0.25);margin-bottom:14px;display:none;}
 
-  /* MAIN GRID: left = stats (compact) + calendar (big) | right = today */
+  /* MAIN GRID */
   .main-grid{display:grid;grid-template-columns:420px 1fr;gap:14px;margin-bottom:14px;align-items:start;}
   .left-col{display:flex;flex-direction:column;gap:10px;}
 
-  /* STAT CARDS — compact horizontal */
+  /* STAT CARDS */
   .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;transition:border-color 0.2s;}
   .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);opacity:0.6;}
@@ -56,7 +52,7 @@
   .stat-card .val{font-size:44px;font-weight:800;line-height:1;color:var(--accent);margin-bottom:2px;}
   .stat-card .sub{font-family:var(--font-mono);font-size:8px;color:var(--text-mid);}
 
-  /* CALENDAR — big */
+  /* CALENDAR */
   .cal-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 16px;}
   .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
   .cal-nav h2{font-size:15px;font-weight:800;color:var(--text);}
@@ -81,14 +77,11 @@
   .section-header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .count-pill{font-family:var(--font-mono);font-size:10px;color:var(--accent);background:rgba(120,180,255,0.12);border:1px solid rgba(120,180,255,0.25);border-radius:20px;padding:3px 10px;white-space:nowrap;}
 
-  /* ENTRY ROWS — single line */
+  /* ENTRY ROWS */
   .entry-wrap{padding:7px 4px;border-bottom:1px solid rgba(120,180,255,0.07);}
   .entry-wrap:last-child{border-bottom:none;}
   .entry-wrap:hover{background:rgba(120,180,255,0.025);border-radius:8px;}
-
-  /* r1 hidden — company and role now part of the single row in r2 */
   .entry-r1{display:none;}
-  /* Single row: company | role | url+copy | notes | save+status */
   .entry-r2{display:grid;grid-template-columns:160px 1fr 1fr 1fr auto;gap:8px;align-items:center;}
 
   /* ALL CARD */
@@ -111,18 +104,42 @@
   .field-input::placeholder{color:var(--text-mid);}
   .field-input.saved{border-color:rgba(74,222,128,0.5);color:var(--accent3);}
   .field-input.co{font-size:11px;font-weight:700;}
-
   .url-wrap{display:flex;gap:5px;align-items:center;}
   .url-wrap .field-input{flex:1;min-width:0;}
   .copy-btn{font-family:var(--font-mono);font-size:9px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 8px;color:var(--text-mid);cursor:pointer;white-space:nowrap;transition:all 0.2s;flex-shrink:0;}
   .copy-btn:hover{border-color:var(--border-bright);color:var(--accent);}
   .copy-btn.copied{border-color:rgba(74,222,128,0.5);color:var(--accent3);}
-
   .row-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;}
   .save-btn{font-family:var(--font-mono);font-size:8px;letter-spacing:0.06em;text-transform:uppercase;background:rgba(120,180,255,0.1);border:1px solid rgba(120,180,255,0.28);border-radius:7px;padding:6px 10px;color:var(--accent);cursor:pointer;white-space:nowrap;transition:all 0.2s;}
   .save-btn:hover{background:rgba(120,180,255,0.2);}
   .save-btn.saving{opacity:0.5;cursor:default;}
   .status-chip{font-family:var(--font-mono);font-size:8px;letter-spacing:0.05em;text-transform:uppercase;border-radius:20px;padding:4px 10px;white-space:nowrap;}
+
+  /* NOTES MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--surface);border:1px solid var(--border-bright);border-radius:16px;padding:24px;width:520px;max-width:90vw;max-height:80vh;display:flex;flex-direction:column;gap:14px;}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;}
+  .modal-title{font-size:14px;font-weight:800;color:var(--text);}
+  .modal-close{width:30px;height:30px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--text-mid);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .modal-close:hover{border-color:var(--border-bright);color:var(--text);}
+  .todo-input-row{display:flex;gap:8px;}
+  .todo-input{flex:1;font-family:var(--font-mono);font-size:11px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);outline:none;transition:border-color 0.2s;}
+  .todo-input:focus{border-color:var(--border-bright);}
+  .todo-input::placeholder{color:var(--text-mid);}
+  .todo-add-btn{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;background:rgba(120,180,255,0.1);border:1px solid rgba(120,180,255,0.28);border-radius:8px;padding:8px 14px;color:var(--accent);cursor:pointer;white-space:nowrap;transition:all 0.2s;}
+  .todo-add-btn:hover{background:rgba(120,180,255,0.2);}
+  .todo-list{overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:6px;max-height:400px;}
+  .todo-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;transition:border-color 0.2s;}
+  .todo-item:hover{border-color:var(--border-bright);}
+  .todo-item.done .todo-text{text-decoration:line-through;color:var(--text-dim);}
+  .todo-check{width:16px;height:16px;border-radius:4px;border:1px solid var(--border);background:transparent;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .todo-check.checked{background:var(--accent3);border-color:var(--accent3);}
+  .todo-check.checked::after{content:'✓';font-size:10px;color:#000;}
+  .todo-text{font-family:var(--font-mono);font-size:11px;color:var(--text);flex:1;}
+  .todo-del{font-size:12px;color:var(--text-dim);cursor:pointer;padding:2px 6px;border-radius:4px;transition:all 0.2s;flex-shrink:0;}
+  .todo-del:hover{color:var(--danger);background:rgba(248,113,113,0.1);}
+  .todo-empty{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);text-align:center;padding:20px;}
 
   /* LOADING */
   .loading-overlay{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
@@ -131,12 +148,12 @@
 
   @keyframes spin{to{transform:rotate(360deg);}}
   @keyframes countUp{from{opacity:0;transform:scale(0.85);}to{opacity:1;transform:scale(1);}}
-  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.45;}}
   .val.pop{animation:countUp 0.4s cubic-bezier(0.16,1,0.3,1) both;}
 
   @media(max-width:860px){
     .main-grid{grid-template-columns:1fr;}
     .header-left p{font-size:20px;}
+    .entry-r2{grid-template-columns:1fr 1fr;}
   }
 </style>
 </head>
@@ -147,6 +164,21 @@
   <p>connecting to notion...</p>
 </div>
 
+<!-- NOTES MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Notes &amp; To-Do</span>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    </div>
+    <div class="todo-input-row">
+      <input class="todo-input" id="todo-input" placeholder="add a note or task..." onkeydown="if(event.key==='Enter')addTodo()">
+      <button class="todo-add-btn" onclick="addTodo()">+ add</button>
+    </div>
+    <div class="todo-list" id="todo-list"></div>
+  </div>
+</div>
+
 <div class="container">
   <header>
     <div class="header-left">
@@ -154,23 +186,17 @@
       <p>Application <span>Dashboard</span></p>
     </div>
     <div class="header-right">
-      <div class="sync-row">
-        <div class="sync-badge" id="db-badge">dashboard &nbsp;—&nbsp; <span>not synced</span></div>
-        <div class="sync-badge" id="gmail-badge">gmail &nbsp;—&nbsp; <span>not triggered</span></div>
-      </div>
-      <div class="btn-row">
-        <a class="btn btn-notion" href="https://www.notion.so/8c71f07486ec42cd981bd461d7c56603" target="_blank" rel="noopener">&#128196; notion db</a>
-        <button class="btn" id="refresh-btn" onclick="loadData()">&#8635; refresh</button>
-        <button class="btn btn-gmail" id="gmail-btn" onclick="syncGmail()">&#9993; sync gmail</button>
+      <div class="sync-badge" id="db-badge">last synced &nbsp;—&nbsp; <span>loading...</span></div>
+      <div class="header-btns">
+        <a class="hbtn notion" href="https://www.notion.so/8c71f07486ec42cd981bd461d7c56603" target="_blank" rel="noopener">&#128196; notion</a>
+        <button class="hbtn notes-btn" onclick="openModal()">&#128221; notes</button>
       </div>
     </div>
   </header>
 
   <div class="err-bar" id="err-bar"></div>
-  <div class="info-bar" id="info-bar"></div>
 
   <div class="main-grid">
-    <!-- LEFT: compact stats + big calendar -->
     <div class="left-col">
       <div class="stats-row">
         <div class="stat-card">
@@ -184,7 +210,7 @@
           <div class="sub" id="s-date">—</div>
         </div>
       </div>
-      <div id="unique-co" style="font-family:var(--font-mono);font-size:11px;color:var(--text-mid);padding:6px 2px 0;">— unique companies applied to</div>
+      <div id="unique-co" style="font-family:var(--font-mono);font-size:11px;color:var(--text-mid);padding:4px 2px 0;">— unique companies applied to</div>
       <div class="cal-card">
         <div class="cal-nav">
           <button class="nav-btn" onclick="shiftMonth(-1)">&#8592;</button>
@@ -195,7 +221,6 @@
       </div>
     </div>
 
-    <!-- RIGHT: today's applications -->
     <div class="today-card">
       <div class="section-header">
         <span class="section-title">Today's Applications</span>
@@ -205,7 +230,6 @@
     </div>
   </div>
 
-  <!-- ALL APPLICATIONS -->
   <div class="all-card">
     <div class="section-header">
       <span class="section-title">All Applications</span>
@@ -229,7 +253,6 @@
 
 <script>
 const WORKER_URL = "https://mute-term-1de0.ayush-panigrahy.workers.dev/";
-const WEBAPP_URL = "https://script.google.com/a/macros/tamu.edu/s/AKfycbxwGaSRy7sIIaqTS-jVGFotAotjp-vuBcnV0yzGOjUy4zSUyPxf7b4VMqLCFF8KsBuh0w/exec";
 
 let allPages=[], calYear, calMonth, allOpen=false, activeDateFilter=null;
 
@@ -246,37 +269,30 @@ function localToday(){
   const n=new Date();
   return n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0");
 }
-function fmtTime(){ return new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}); }
+function fmtTime(){return new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});}
 
-async function loadData(){
-  const btn=document.getElementById("refresh-btn");
-  btn.disabled=true; btn.textContent="loading...";
-  document.getElementById("err-bar").style.display="none";
+// ── AUTO REFRESH every 60 seconds ─────────────────────────────
+async function loadData(silent){
+  if(!silent) document.getElementById("err-bar").style.display="none";
   try{
     const res=await fetch(WORKER_URL);
     if(!res.ok) throw new Error((await res.json().catch(()=>({}))).error||"HTTP "+res.status);
     allPages=(await res.json()).pages||[];
     render();
-    document.getElementById("db-badge").innerHTML=`dashboard &nbsp;—&nbsp; <span>synced ${fmtTime()}</span>`;
-  }catch(e){showErr(e.message||"Failed to load.");}
+    document.getElementById("db-badge").innerHTML=`last synced &nbsp;—&nbsp; <span>${fmtTime()}</span>`;
+  }catch(e){
+    if(!silent) showErr(e.message||"Failed to load.");
+  }
   document.getElementById("loading").style.display="none";
-  btn.disabled=false; btn.innerHTML="&#8635; refresh";
 }
 
-async function syncGmail(){
-  const btn=document.getElementById("gmail-btn");
-  btn.disabled=true; btn.classList.add("btn-syncing"); btn.textContent="syncing...";
-  showInfo("Gmail sync triggered. Takes up to 60 seconds, dashboard will auto-refresh.");
-  document.getElementById("gmail-badge").innerHTML=`gmail &nbsp;—&nbsp; <span>triggered ${fmtTime()}</span>`;
-  try{await fetch(WEBAPP_URL+"?action=sync&t="+Date.now(),{mode:"no-cors"});}catch(e){}
-  setTimeout(async()=>{
-    await loadData();
-    document.getElementById("info-bar").style.display="none";
-    document.getElementById("gmail-badge").innerHTML=`gmail &nbsp;—&nbsp; <span>completed ${fmtTime()}</span>`;
-    btn.disabled=false; btn.classList.remove("btn-syncing"); btn.innerHTML="&#9993; sync gmail";
-  },45000);
-}
+// Initial load then auto-refresh every 60s
+window.addEventListener("DOMContentLoaded",()=>{
+  loadData(false);
+  setInterval(()=>loadData(true), 60000);
+});
 
+// ── RENDER ────────────────────────────────────────────────────
 function render(){
   const today=localToday();
   const dc={};
@@ -284,9 +300,8 @@ function render(){
   const todayPages=allPages.filter(p=>p.date&&p.date.slice(0,10)===today);
   setVal("s-total",allPages.length);
   setVal("s-today",todayPages.length);
-  const uniqueCo = new Set(allPages.map(p => (p.company||"").toLowerCase().trim()).filter(c => c && c !== "unknown")).size;
-  document.getElementById("unique-co").textContent = uniqueCo + " unique companies applied to";
-
+  const uniqueCo=new Set(allPages.map(p=>(p.company||"").toLowerCase().trim()).filter(c=>c&&c!=="unknown")).size;
+  document.getElementById("unique-co").textContent=uniqueCo+" unique companies applied to";
   const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const [,m,d]=today.split("-");
   document.getElementById("s-date").textContent=MN[+m-1]+" "+(+d);
@@ -297,19 +312,15 @@ function render(){
   if(allOpen) filterAll();
 }
 
-function getDC(){
-  const dc={};
-  allPages.forEach(p=>{if(p.date){const d=p.date.slice(0,10);dc[d]=(dc[d]||0)+1;}});
-  return dc;
-}
+// ── CALENDAR ──────────────────────────────────────────────────
+function getDC(){const dc={};allPages.forEach(p=>{if(p.date){const d=p.date.slice(0,10);dc[d]=(dc[d]||0)+1;}});return dc;}
 
 function renderCalendar(dc){
   const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
   const DOWS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   document.getElementById("cal-title").textContent=MONTHS[calMonth]+" "+calYear;
   const todayStr=localToday();
-  const grid=document.getElementById("cal-grid");
-  grid.innerHTML="";
+  const grid=document.getElementById("cal-grid");grid.innerHTML="";
   DOWS.forEach(d=>{const el=document.createElement("div");el.className="cal-dow";el.textContent=d;grid.appendChild(el);});
   const fd=new Date(calYear,calMonth,1).getDay();
   const dim=new Date(calYear,calMonth+1,0).getDate();
@@ -344,8 +355,7 @@ function renderCalendar(dc){
 
 function shiftMonth(delta){
   calMonth+=delta;
-  if(calMonth>11){calMonth=0;calYear++;}
-  if(calMonth<0){calMonth=11;calYear--;}
+  if(calMonth>11){calMonth=0;calYear++;}if(calMonth<0){calMonth=11;calYear--;}
   renderCalendar(getDC());
 }
 
@@ -366,16 +376,15 @@ function updateAllHeader(){
   }else{fp.style.display="none";cb.style.display="none";}
 }
 
+// ── TODAY ─────────────────────────────────────────────────────
 function renderToday(pages){
   document.getElementById("today-pill").textContent=pages.length+" entr"+(pages.length===1?"y":"ies");
   const list=document.getElementById("today-list");list.innerHTML="";
-  if(!pages.length){
-    list.innerHTML=`<div style="font-family:var(--font-mono);font-size:11px;color:var(--text-mid);padding:10px 4px;">No applications logged today.</div>`;
-    return;
-  }
+  if(!pages.length){list.innerHTML=`<div style="font-family:var(--font-mono);font-size:11px;color:var(--text-mid);padding:10px 4px;">No applications logged today.</div>`;return;}
   pages.forEach(p=>list.appendChild(buildRow(p,false)));
 }
 
+// ── ALL ───────────────────────────────────────────────────────
 function toggleAll(){
   allOpen=!allOpen;
   document.getElementById("all-entries-wrap").classList.toggle("open",allOpen);
@@ -394,40 +403,33 @@ function filterAll(){
   [...f].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).forEach(p=>list.appendChild(buildRow(p,true)));
 }
 
+// ── ROW BUILDER ───────────────────────────────────────────────
 function buildRow(p,showDate){
   const s=SC[p.status]||SC["Applied"];
   const wrap=document.createElement("div");wrap.className="entry-wrap";
-
-  // r1 intentionally empty (hidden by CSS)
   const r1=document.createElement("div");r1.className="entry-r1";
-
-  // Single row: company | role | url+copy | notes | save+status
   const r2=document.createElement("div");r2.className="entry-r2";
-  const dateLabel=showDate&&p.date?`<div style="font-family:var(--font-mono);font-size:8px;color:var(--text-mid);margin-top:3px;">${p.date.slice(0,10)}</div>`:"";
+  const dateLabel=showDate&&p.date?`<div style="font-family:var(--font-mono);font-size:9px;color:var(--text-mid);margin-top:3px;">${p.date.slice(0,10)}</div>`:"";
   r2.innerHTML=`
     <div>
-      <input class="field-input co" id="co-${p.id}" value="${esc(p.company||"")}" placeholder="company..."
-        onkeydown="if(event.key==='Enter')saveField('${p.id}')">
+      <input class="field-input co" id="co-${p.id}" value="${esc(p.company||"")}" placeholder="company..." onkeydown="if(event.key==='Enter')saveField('${p.id}')">
       ${dateLabel}
     </div>
-    <input class="field-input" id="role-${p.id}" value="${esc(p.role||"")}" placeholder="role..."
-      onkeydown="if(event.key==='Enter')saveField('${p.id}')">
+    <input class="field-input" id="role-${p.id}" value="${esc(p.role||"")}" placeholder="role..." onkeydown="if(event.key==='Enter')saveField('${p.id}')">
     <div class="url-wrap">
-      <input class="field-input" id="url-${p.id}" value="${esc(p.careerPage||"")}" placeholder="career page url..."
-        onkeydown="if(event.key==='Enter')saveField('${p.id}')">
-      <button class="copy-btn" id="copy-${p.id}" onclick="copyUrl('${p.id}')" title="copy url">&#128203;</button>
+      <input class="field-input" id="url-${p.id}" value="${esc(p.careerPage||"")}" placeholder="career page url..." onkeydown="if(event.key==='Enter')saveField('${p.id}')">
+      <button class="copy-btn" id="copy-${p.id}" onclick="copyUrl('${p.id}')" title="copy">&#128203;</button>
     </div>
-    <input class="field-input" id="note-${p.id}" value="${esc(p.notes||"")}" placeholder="notes..."
-      onkeydown="if(event.key==='Enter')saveField('${p.id}')">
+    <input class="field-input" id="note-${p.id}" value="${esc(p.notes||"")}" placeholder="notes..." onkeydown="if(event.key==='Enter')saveField('${p.id}')">
     <div class="row-actions">
       <button class="save-btn" id="save-${p.id}" onclick="saveField('${p.id}')">save</button>
       <span class="status-chip" style="background:${s.bg};color:${s.color}">${esc(p.status)}</span>
     </div>`;
-
   wrap.appendChild(r1);wrap.appendChild(r2);
   return wrap;
 }
 
+// ── SAVE ──────────────────────────────────────────────────────
 async function saveField(pageId){
   const co=document.getElementById("co-"+pageId);
   const ro=document.getElementById("role-"+pageId);
@@ -436,14 +438,18 @@ async function saveField(pageId){
   const btn=document.getElementById("save-"+pageId);
   btn.textContent="saving...";btn.classList.add("saving");btn.disabled=true;
   try{
-    const res=await fetch(WORKER_URL+"update",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({pageId,company:co.value.trim(),role:ro.value.trim(),careerPage:ur.value.trim(),notes:no.value.trim()})});
-    if(!res.ok) throw new Error("Save failed");
+    const res=await fetch(WORKER_URL+"update",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({pageId,company:co.value.trim(),role:ro.value.trim(),careerPage:ur.value.trim(),notes:no.value.trim()})
+    });
+    if(!res.ok){const d=await res.json().catch(()=>({}));throw new Error(d.error||"Save failed");}
     [co,ro,ur,no].forEach(el=>el.classList.add("saved"));btn.textContent="saved!";
     const page=allPages.find(p=>p.id===pageId);
     if(page){page.company=co.value.trim();page.role=ro.value.trim();page.careerPage=ur.value.trim();page.notes=no.value.trim();}
     setTimeout(()=>{[co,ro,ur,no].forEach(el=>el.classList.remove("saved"));btn.textContent="save";btn.classList.remove("saving");btn.disabled=false;},2000);
   }catch(e){
+    console.error("Save error:",e);
     btn.textContent="error";
     setTimeout(()=>{btn.textContent="save";btn.classList.remove("saving");btn.disabled=false;},2000);
   }
@@ -459,18 +465,61 @@ function copyUrl(pageId){
   });
 }
 
-function setVal(id,val){
-  const el=document.getElementById(id);el.textContent=val;
-  el.classList.remove("pop");void el.offsetWidth;el.classList.add("pop");
-}
-function showErr(msg){
-  document.getElementById("loading").style.display="none";
-  const el=document.getElementById("err-bar");el.textContent="Error: "+msg;el.style.display="block";
-}
-function showInfo(msg){const el=document.getElementById("info-bar");el.textContent=msg;el.style.display="block";}
-function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+// ── NOTES / TODO MODAL ────────────────────────────────────────
+let todos=JSON.parse(localStorage.getItem("jt-todos")||"[]");
 
-window.addEventListener("DOMContentLoaded",loadData);
+function saveTodos(){localStorage.setItem("jt-todos",JSON.stringify(todos));}
+
+function openModal(){
+  document.getElementById("modal-overlay").classList.add("open");
+  renderTodos();
+  setTimeout(()=>document.getElementById("todo-input").focus(),100);
+}
+
+function closeModal(){document.getElementById("modal-overlay").classList.remove("open");}
+
+function addTodo(){
+  const input=document.getElementById("todo-input");
+  const text=input.value.trim();
+  if(!text)return;
+  todos.unshift({id:Date.now(),text,done:false});
+  saveTodos();
+  input.value="";
+  renderTodos();
+}
+
+function toggleTodo(id){
+  const t=todos.find(t=>t.id===id);
+  if(t){t.done=!t.done;saveTodos();renderTodos();}
+}
+
+function deleteTodo(id){
+  todos=todos.filter(t=>t.id!==id);
+  saveTodos();renderTodos();
+}
+
+function renderTodos(){
+  const list=document.getElementById("todo-list");
+  list.innerHTML="";
+  if(!todos.length){
+    list.innerHTML=`<div class="todo-empty">No notes yet. Add one above.</div>`;
+    return;
+  }
+  todos.forEach(t=>{
+    const item=document.createElement("div");
+    item.className="todo-item"+(t.done?" done":"");
+    item.innerHTML=`
+      <div class="todo-check ${t.done?"checked":""}" onclick="toggleTodo(${t.id})"></div>
+      <span class="todo-text">${esc(t.text)}</span>
+      <span class="todo-del" onclick="deleteTodo(${t.id})" title="delete">&#10005;</span>`;
+    list.appendChild(item);
+  });
+}
+
+// ── UTILS ─────────────────────────────────────────────────────
+function setVal(id,val){const el=document.getElementById(id);el.textContent=val;el.classList.remove("pop");void el.offsetWidth;el.classList.add("pop");}
+function showErr(msg){document.getElementById("loading").style.display="none";const el=document.getElementById("err-bar");el.textContent="Error: "+msg;el.style.display="block";}
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 </script>
 </body>
 </html>
